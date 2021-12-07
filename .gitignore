@@ -1,0 +1,14 @@
+idea/
+.idea/
+*.iml
+*.ipr
+*.iws
+target
+*.log*
+.DS_Store
+.vscode
+node_modules
+/dist/
+/web-tier/**/resources/public
+/test/unit/coverage/
+node
