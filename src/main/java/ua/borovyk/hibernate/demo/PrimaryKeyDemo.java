@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import ua.borovyk.hibernate.demo.entity.Student;
 
-public class CreateStudentDemo {
+public class PrimaryKeyDemo {
     public static void main(String[] args) {
 
         SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
@@ -14,13 +14,17 @@ public class CreateStudentDemo {
         Session session = factory.getCurrentSession();
 
         try {
-            System.out.println("Creating a new Student object");
-            Student tmpStudent = new Student("Petro", "Petrov", "petrov@gmail.com");
+            System.out.println("Creating a new Student objects");
+            Student Student1 = new Student("Kate", "Scott", "scott@gmail.com");
+            Student Student2 = new Student("Paul", "Smith", "smith@gmail.com");
+            Student Student3 = new Student("Nick", "Junior", "junior@gmail.com");
 
             session.beginTransaction();
 
             System.out.println("Saving the student...");
-            session.save(tmpStudent);
+            session.save(Student1);
+            session.save(Student2);
+            session.save(Student3);
 
             session.getTransaction().commit();
 
@@ -30,3 +34,4 @@ public class CreateStudentDemo {
         }
     }
 }
+
