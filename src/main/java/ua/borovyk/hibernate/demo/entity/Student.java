@@ -1,6 +1,9 @@
 package ua.borovyk.hibernate.demo.entity;
 
+import ua.borovyk.hibernate.demo.DateUtils;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "student")
@@ -20,13 +23,18 @@ public class Student {
     @Column(name = "email")
     private String email;
 
+    @Column(name = "date_of_birth")
+    @Temporal(TemporalType.DATE)
+    private Date dateOfBirth;
+
     public Student() {
     }
 
-    public Student(String firstName, String lastName, String email) {
+    public Student(String firstName, String lastName, String email, Date theDateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.dateOfBirth = theDateOfBirth;
     }
 
     public int getId() {
@@ -61,6 +69,14 @@ public class Student {
         this.email = email;
     }
 
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -68,6 +84,7 @@ public class Student {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", dateOfBirth=" + DateUtils.formatDate(dateOfBirth) +
                 '}';
     }
 }
